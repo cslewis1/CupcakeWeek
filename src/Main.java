@@ -1,4 +1,3 @@
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,11 +35,10 @@ public class Main {
         System.out.println("How much would you like to charge for the cupcake? " +
                 "(Input a numerical number taken to 2 decimal places)");
 
-        String redVelvetPriceText = input.nextLine();
+        priceText = input.nextLine();
+        price = Double.parseDouble(priceText);
 
-        Double redVelvetPrice = Double.parseDouble(priceText);
-
-        redVelvet.setPrice(redVelvetPrice);
+        redVelvet.setPrice(price);
 
         //Chocolate cupcake
        System.out.println("We are deciding on the price for our chocolate cupcake. Here is the description:");
@@ -49,11 +47,11 @@ public class Main {
         System.out.println("How much would you like to charge for the cupcake? " +
                 "(Input a numerical number taken to 2 decimal places)");
 
-        String chocolatePriceText = input.nextLine();
+        priceText = input.nextLine();
 
-        double chocolatePrice = Double.parseDouble(priceText);
+        price = Double.parseDouble(priceText);
 
-        chocolate.setPrice(chocolatePrice);
+        chocolate.setPrice(price);
 
         //Add the cupcakes to the Array List
         cupcakeMenu.add(cupcake);
@@ -65,8 +63,8 @@ public class Main {
         ArrayList<Drink> drinkMenu = new ArrayList<Drink>();
 
         Drink water = new Drink();
-        Drink soda = new Drink();
-        Drink milk = new Drink();
+        Soda soda = new Soda();
+        Milk milk = new Milk();
 
         System.out.println("We are in the middle of creating the drink menu. We currently have three drinks on the menu but we need to decide on pricing.");
 
@@ -77,11 +75,11 @@ public class Main {
         System.out.println("How much would you like to charge for the drink? " +
                 "(Input a numerical number taken to 2 decimal places)");
 
-        String waterPriceText = input.nextLine();
+        priceText = input.nextLine();
 
-        Double waterPrice = Double.parseDouble(priceText);
+        price = Double.parseDouble(priceText);
 
-        water.setPrice(waterPrice);
+        water.setPrice(price);
 
         //Soda//
         System.out.println("We are deciding on the price for our soda. Here is the description:");
@@ -90,11 +88,11 @@ public class Main {
         System.out.println("How much would you like to charge for the drink? " +
                 "(Input a numerical number taken to 2 decimal places)");
 
-        String sodaPriceText = input.nextLine();
+        priceText = input.nextLine();
 
-        Double sodaPrice = Double.parseDouble(priceText);
+        price = Double.parseDouble(priceText);
 
-        soda.setPrice(sodaPrice);
+        soda.setPrice(price);
 
         //Milk//
         System.out.println("We are deciding on the price for our milk. Here is the description:");
@@ -103,16 +101,17 @@ public class Main {
         System.out.println("How much would you like to charge for the drink? " +
                 "(Input a numerical number taken to 2 decimal places)");
 
-        String milkPriceText = input.nextLine();
+        priceText = input.nextLine();
 
-        Double milkPrice = Double.parseDouble(priceText);
+        price = Double.parseDouble(priceText);
 
-        milk.setPrice(milkPrice);
+        milk.setPrice(price);
 
         //Add the objects to the array list
         drinkMenu.add(water);
         drinkMenu.add(soda);
         drinkMenu.add(milk);
+        new Order(cupcakeMenu, drinkMenu);
     }
 }
 class Cupcake{
