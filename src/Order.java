@@ -17,8 +17,8 @@ public class Order {
         ArrayList<Object> order = new ArrayList<Object>();
 
         if(placeOrder.equalsIgnoreCase("Y")){
-            LocalDate.now();
-            LocalTime.now();
+            order.add(LocalDate.now());
+            order.add(LocalTime.now());
 
             System.out.println("Here is the menu.");
             System.out.println("CUPCAKES");
@@ -43,47 +43,61 @@ public class Order {
             }
 
             System.out.println();
-            Boolean ordering = true;
+            boolean ordering = true;
 
-            while(ordering == true){
+            while(ordering){
                 System.out.println("What would you like to order? Please use the number associated with each item to order.");
 
                 int orderChoice = input.nextInt();
-
                 input.nextLine();
 
-                switch(orderChoice){
-                    case 1:
-                        order.add(cupcakeMenu.get(0));
-                        break;
-                    case 2:
-                        order.add(cupcakeMenu.get(1));
-                        break;
-                    case 3:
-                        order.add(cupcakeMenu.get(2));
-                        break;
-                    case 4:
-                        order.add(drinkMenu.get(0));
-                        break;
-                    case 5:
-                        order.add(drinkMenu.get(1));
-                        break;
-                    case 6:
-                        order.add(drinkMenu.get(2));
-                        break;
-                    default: System.out.println("Sorry, we don’t seem to have that on the menu.");
+                if (orderChoice == 1)
+                {
+                    order.add(cupcakeMenu.get(0));
+                    System.out.println("Item added to order");
+                }
+                else if (orderChoice == 2)
+                {
+                    order.add(cupcakeMenu.get(1));
+                    System.out.println("Item added to order");
+                }
+                else if (orderChoice == 3)
+                {
+                    order.add(cupcakeMenu.get(2));
+                    System.out.println("Item added to order");
+                }
+                else if (orderChoice == 4)
+                {
+                    order.add(drinkMenu.get(0));
+                    System.out.println("Item added to order");
+                }
+                else if (orderChoice == 5)
+                {
+                    order.add(drinkMenu.get(1));
+                    System.out.println("Item added to order");
+                }
+                else if (orderChoice == 6)
+                {
+                    order.add(drinkMenu.get(2));
+                    System.out.println("Item added to order");
+                }
+                // Create an else statement with no parameters
+                else
+                {
+                    System.out.println("Sorry, we don't seem to have that on the menu");
                 }
 
                 System.out.println("Would you like to continue ordering? (Y/N)");
 
-                placeOrder = input.nextLine();
+                String continueOrder = input.nextLine();
 
-                if (!placeOrder.equalsIgnoreCase("Y")){
+                if (!continueOrder.equalsIgnoreCase("Y"))
+                {
+                    // Set ordering equal to false
                     ordering = false;
                 }
             }
 
-            //Generate a receipt of items ordered.
             System.out.println(order.get(0));
             System.out.println(order.get(1));
 
@@ -91,83 +105,54 @@ public class Order {
 
             for (int i = 2; i < order.size(); i++)
             {
-                // Check if order at i is equal to cupcakeMenu at 0
                 if (order.get(i).equals(cupcakeMenu.get(0)))
                 {
-                    // Print the type of cupcake at cupcakeMenu index 0
                     cupcakeMenu.get(0).type();
-
-                    // Print the price of cupcake at cupcakeMenu index 0
                     System.out.println(cupcakeMenu.get(0).getPrice());
-
-                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
                     subTotal = subTotal + cupcakeMenu.get(0).getPrice();
                 }
-                // Check if order at i is equal to cupcakeMenu at 1
+
                 else if (order.get(i).equals(cupcakeMenu.get(1)))
                 {
-                    // Print the type of cupcake at cupcakeMenu index 0
                     cupcakeMenu.get(1).type();
-
-                    // Print the price of cupcake at cupcakeMenu index 0
                     System.out.println(cupcakeMenu.get(1).getPrice());
-
-                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
                     subTotal = subTotal + cupcakeMenu.get(1).getPrice();
                 }
-                //check if order at i is equal to cupcakeMenu at 2
+
                 else if (order.get(i).equals(cupcakeMenu.get(2)))
                 {
-                    // Print the type of cupcake at cupcakeMenu index 0
+
                     cupcakeMenu.get(2).type();
-
-                    // Print the price of cupcake at cupcakeMenu index 0
                     System.out.println(cupcakeMenu.get(2).getPrice());
-
-                    //Set subtotal equal to subtotal plus cupcakeMenu getPrice at 0
                     subTotal = subTotal + cupcakeMenu.get(2).getPrice();
                 }
-                // Check if order at i is equal to drinkMenu at 0
+
                 else if (order.get(i).equals(drinkMenu.get(0)))
                 {
-                    // Print the type of drink at drinkMenu index 0
                     drinkMenu.get(0).type();
-
-                    // Print the price of drink at drinkMenu index 0
                     System.out.println(drinkMenu.get(0).getPrice());
-
-                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 0
                     subTotal = subTotal + drinkMenu.get(0).getPrice();
                 }
-                // Check if order at i is equal to drinkMenu at 1
+
                 else if (order.get(i).equals(drinkMenu.get(1)))
                 {
-                    // Print the type of drink at drinkMenu index 1
                     drinkMenu.get(1).type();
-
-                    // Print the price of drink at drinkMenu index 0
                     System.out.println(drinkMenu.get(1).getPrice());
-
-                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 0
                     subTotal = subTotal + drinkMenu.get(1).getPrice();
                 }
-                // Check if order at i is equal to drinkMenu at 2
+
                 else if (order.get(i).equals(drinkMenu.get(2)))
                 {
-                    // Print the type of drink at drinkMenu index 2
                     drinkMenu.get(2).type();
-
-                    // Print the price of drink at drinkMenu index 2
                     System.out.println(drinkMenu.get(2).getPrice());
-
-                    //Set subtotal equal to subtotal plus drinkMenu getPrice at 2
                     subTotal = subTotal + drinkMenu.get(2).getPrice();
                 }
             }
-            // Print subtotal
+
             System.out.println("$" + subTotal + "\n");
             new CreateFile();
             new WriteToFile(order);
+
         } else {
             System.out.println("Have a nice day then.");
         }
@@ -205,7 +190,6 @@ public class Order {
                 System.out.println("An error occurred.");
 
             }
-
         }
     }
 }
